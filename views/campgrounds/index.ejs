@@ -1,0 +1,37 @@
+<% include ../partials/header %>
+
+
+	 <header class="jumbotron", style="background-color: gray">
+		<div class="container">
+	   <div>
+		<h1 id="view" style="color: white">Do you remember that scene?</h1>
+		<p id="view" style="color: white"></p>
+		 <p>
+			 <a class="btn btn-default btn-lg" href="/campgrounds/new" id="view">Add a New Film Still</a>
+		 </p>
+	   </div>
+		</div>
+	 </header>
+
+<div class="container">
+	<div class="row" style="display:flex; flex-wrap: wrap">
+		<% campgrounds.forEach(function(campground) {%>
+	  <div class="col-xs-6 col-md-3">
+		  <div class="thumbnail">
+			  <img src = "<%= campground.image%>">
+			  <div class="caption">
+				<li id="view"><%=campground.name%></li>
+				<div>
+           			<span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
+       			</div>
+	 		  </div>
+			  <p>
+				  <a href="/campgrounds/<%= campground._id%>" class="btn btn-default" id="view">More Info</a>
+			  </p>
+		  </div>
+	  </div>
+		<%})%>
+	</div>
+	
+</div>
+<% include ../partials/footer %>
