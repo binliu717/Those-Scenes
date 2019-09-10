@@ -33,8 +33,8 @@ var commentsRoutes = require("./routes/comments")
 
 //seedDB();
 mongoose.connect('mongodb+srv://Mike:5924xiaos@cluster0-rqmrw.mongodb.net/test?retryWrites=true&w=majority', {
-	useNewUrlParser: true;
-	useCreateIndex: true;
+	useNewUrlParser: true,
+	useCreateIndex: true
 });
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
@@ -76,8 +76,6 @@ app.use(commentsRoutes);
 		{name: "Mountain3", image: "https://11mjsg94ex5ggb0b7k6013aj-wpengine.netdna-ssl.com/wp-content/uploads/img_0842-1170x640.jpg"}
 	]
 */
-
-
 
 app.listen(process.env.PORT,process.env.IP, function() {
 	console.log("Connceted!!")
