@@ -19,7 +19,7 @@
 			  <ul class="nav navbar-nav navbar-right">
 				  <%if(!currentUser){%>
 				  <li><a href="/login" style="color: white" id="view">Login</a></li>
-				  <li><a href="/registerNew" style="color: white" id="view">Sign Up</a></li>
+				  <li><a href="/register" style="color: white" id="view">Sign Up</a></li>
 				  <%} else{%>
 				  <li><a href="#" id="view" style="color: white">Signed In as <%= currentUser.username %></a></li>
 				  <li><a href="/logout" id="view" style="color: white">Logout</a></li>

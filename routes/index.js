@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
 //show the register form
 
 router.get("/register", function(req, res){
-	res.render("register");
+	res.render("registerNew");
 })
 
 router.post("/register", function(req, res) {
@@ -20,7 +20,7 @@ router.post("/register", function(req, res) {
 	User.register(newUser, req.body.password, function(err, user) {
 		if(err){
 			req.flash("error", err.message);
-  			return res.redirect("/register");
+  			return res.redirect("/registerNew");
 		} else{
 			passport.authenticate("local")(req, res, function(){
 				req.flash("success", "Welcome to YelpCamp " + user.username + "!");
