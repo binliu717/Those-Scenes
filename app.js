@@ -76,6 +76,6 @@ app.use(commentsRoutes);
 
 
 
-app.listen(9000, function() {
+app.listen(process.env.PORT,process.env.IP, function() {
 	console.log("Connceted!!")
 })
