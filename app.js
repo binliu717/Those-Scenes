@@ -32,7 +32,7 @@ var commentsRoutes = require("./routes/comments")
 	indexRoutes = require("./routes/index")
 
 //seedDB();
-mongoose.connect("mongodb://localhost/yelp_camp", {useNewUrlParser: true});
+mongoose.connect(mongodb+srv://Mike:5924xiaos@cluster0-rqmrw.mongodb.net/test?retryWrites=true&w=majority)
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
