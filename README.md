@@ -6,9 +6,9 @@ Those scenes is a film still rating website for movie lovers to share film still
 
 You can post, search, rate, like, and leave comments!
 
-For back-end: framework is based on Express.js for HTTP requests and responses
-              database is MongoDB
-              added user authentication
+For back-end: framework is based on Express.js for HTTP requests and responses;
+              database is MongoDB;
+              added user authentication;
               deployed via Heroku
               
 For front-end: HTML, CSS, and JavaScript
