@@ -5,10 +5,30 @@
 		<div class="container">
 	   <div>
 		<h1 id="view" style="color: white">Do you remember that scene?</h1>
+		   <div>
+			   <h3 id="view" style="color: white">
+				   Those Scenes is a place for movie lovers to share film stills. You can post, search, like, and discuss those scenes with other users.
+			   </h3>
+			   <h3 id="view" style="color: white">
+				   Leave a rate if you like or hate that scene!
+			   </h3>
+		   </div>
 		<p id="view" style="color: white"></p>
+		 <center>
 		 <p>
-			 <a class="btn btn-default btn-lg" href="/campgrounds/new" id="view">Add a New Film Still</a>
+			 <a class="btn btn-success btn-lg" href="/campgrounds/new" id="view">Add a New Film Still</a>
 		 </p>
+		</center>
+		  <p>
+            	<form action="/campgrounds" method="GET" class="form-inline">
+					<center>
+            		<div class="form-group">
+            			<input type="text" name="search" placeholder="move name ..." class="form-control">
+            			<input type="submit" value="Search" class="btn btn-default">
+            		</div>
+					</center>
+            	</form>
+            </p>
 	   </div>
 		</div>
 	 </header>
@@ -21,6 +41,17 @@
 			  <img src = "<%= campground.image%>">
 			  <div class="caption">
 				<li id="view"><%=campground.name%></li>
+				<div>
+				<% if (campground.rating === 0) { %>
+                    <em>No reviews yet.</em>
+                    <% } else { %>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star <% if (campground.rating > 1.5) { %> checked <% } %>"></span>
+                    <span class="fa fa-star <% if (campground.rating > 2.5) { %> checked <% } %>"></span>
+                    <span class="fa fa-star <% if (campground.rating > 3.5) { %> checked <% } %>"></span>
+                    <span class="fa fa-star <% if (campground.rating > 4.5) { %> checked <% } %>"></span>
+                    <% } %>
+				</div>
 				<div>
            			<span class="badge label-primary"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
        			</div>

@@ -10,9 +10,6 @@ var express = require("express");
 	LocalStrategy = require("passport-local");
 	methodOverride = require("method-override");
 	flash = require("connect-flash");
-// Passport Configuration
-
-
 
 app.use(require("express-session")({
 		secret: "i am the cutest dog",
@@ -27,9 +24,10 @@ app.use(function(req, res, next){
 	next();
 })
 
-var commentsRoutes = require("./routes/comments")
- 	campgroundRoutes = require("./routes/campgrounds")
-	indexRoutes = require("./routes/index")
+var commentsRoutes = require("./routes/comments"),
+ 	campgroundRoutes = require("./routes/campgrounds"),
+	indexRoutes = require("./routes/index"),
+	reviewRoutes     = require("./routes/reviews")
 
 //seedDB();
 mongoose.connect('mongodb+srv://Mike:5924xiaos@cluster0-rqmrw.mongodb.net/test?retryWrites=true&w=majority', {
@@ -42,6 +40,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname+"/public"));
 app.use(methodOverride("_method"));
 
+// Passport Configuration
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -51,32 +50,12 @@ passport.deserializeUser(User.deserializeUser());
 app.use(indexRoutes);
 app.use(campgroundRoutes);
 app.use(commentsRoutes);
-// SCHEMA SETUP
-
-//  Campground.create({
-// 	name:"Fengle",
-// 	image: "http://tipsinahmoundscampground.com/wp-content/uploads/2017/07/IMG_6559-copy.jpg",
-// 	description: "wow wow wow sdkfjsdfkjsdf;slkdjf"
-// }, function(err, campground) {
-// 	if(err){
-// 		console.log(err);
-// 	} else {
-// 		console.log("New Campground: ")
-// 		console.log(campground);
-// 	}
-// })
-
-/*var campgrounds = [
-		{name: "Salmon Greek", image: "http://www.nationalparks.nsw.gov.au/-/media/npws/images/parks/cattai-national-park/cattai-campground/cattai-campground-05.jpg"},
-		{name: "Fengle", image: "http://tipsinahmoundscampground.com/wp-content/uploads/2017/07/IMG_6559-copy.jpg"},
-		{name: "Mountain", image: "https://11mjsg94ex5ggb0b7k6013aj-wpengine.netdna-ssl.com/wp-content/uploads/img_0842-1170x640.jpg"},
-		{name: "Fengle2", image: "http://tipsinahmoundscampground.com/wp-content/uploads/2017/07/IMG_6559-copy.jpg"},
-		{name: "Mountain3", image: "https://11mjsg94ex5ggb0b7k6013aj-wpengine.netdna-ssl.com/wp-content/uploads/img_0842-1170x640.jpg"},
-		{name: "Fengle2", image: "http://tipsinahmoundscampground.com/wp-content/uploads/2017/07/IMG_6559-copy.jpg"},
-		{name: "Mountain3", image: "https://11mjsg94ex5ggb0b7k6013aj-wpengine.netdna-ssl.com/wp-content/uploads/img_0842-1170x640.jpg"}
-	]
-*/
+app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.listen(process.env.PORT,process.env.IP, function() {
 	console.log("Connceted!!")
 })
+
+// app.listen(9000, () => {
+// 	console.log('server listening on port 3000');
+// });
